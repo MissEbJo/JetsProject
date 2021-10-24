@@ -11,6 +11,9 @@ public abstract class Jet  {
 	
 	
 	
+	public Jet() {
+		
+	}
 	
 	public Jet(String type, String model, double speed, int range, long price) {
 		super();
@@ -82,7 +85,11 @@ public abstract class Jet  {
 	}
 
 	public void fly() {
-		
+//		AirField airField = new AirField();
+//		airField.getField();
+//		double flightTime = 0;
+//		flightTime = range/speed;
+//		System.out.println(flightTime);
 	}
 	public double getSpeedInMach() {
 		
@@ -92,7 +99,7 @@ public abstract class Jet  {
 	@Override
 	public String toString() {
 		return "Type: " + type + " Model: " + model + ", Speed(MPH): " 
-	+ speed + ", Range:" + range + ", Price: $" + price;
+	+ speed + ", Range: " + range + ", Price: $" + price + "\n";
 				
 	}
 	

@@ -8,6 +8,7 @@ import com.skilldistillery.entities.AirField;
 import com.skilldistillery.entities.CargoPlane;
 import com.skilldistillery.entities.FighterJet;
 import com.skilldistillery.entities.Jet;
+import com.skilldistillery.entities.JetImpl;
 import com.skilldistillery.entities.LuxuryJet;
 import com.skilldistillery.entities.SkyTanic;
 import com.skilldistillery.entities.UfoBoom;
@@ -37,6 +38,8 @@ public class JetsApplication {
 	}
 
 	private void displayUserMenu() {
+		System.out.println("********** Welcome the 'Danger Zone'!**********");
+		System.out.println();
 		System.out.println("***********************************************");
 		System.out.println("***********   1. List Fleet         ***********");
 		System.out.println("**********    2. Fly All Jets        **********");
@@ -51,47 +54,47 @@ public class JetsApplication {
 	}
 
 	public void selectOption() {
-		
-		while(keepGoing) {
-		System.out.println("Please enter the number of the option you would like to select: ");
 
-		int choice = input.nextInt();
-		input.nextLine();
+		while (keepGoing) {
+			System.out.println("Please enter the number of the option you would like to select: \n");
 
-		switch (choice) {
-		case 1:
-			displayFleet();
-			break;
-		case 2:
-			flyJets();
-			break;
-		case 3:
-			fastestJet();
-			break;
-		case 4:
-			longestRangeJet();
-			break;
-		case 5:
-			loadCargoJet();
-			break;
-		case 6:
-			letsDogfight();
-			break;
-		case 7:
-			addJet();
-			break;
-		case 8:
-			removeJet();
-			break;
-		case 9:
-			optionQuit();
-			break;
+			int choice = input.nextInt();
+			input.nextLine();
 
-		default:
-			System.out.println("Please enter a valid number to select the screen to be viewed.");
-			break;
+			switch (choice) {
+			case 1:
+				displayFleet();
+				break;
+			case 2:
+				flyJets();
+				break;
+			case 3:
+				fastestJet();
+				break;
+			case 4:
+				longestRangeJet();
+				break;
+			case 5:
+				loadCargoJet();
+				break;
+			case 6:
+				letsDogfight();
+				break;
+			case 7:
+				addJet();
+				break;
+			case 8:
+				removeJet();
+				break;
+			case 9:
+				optionQuit();
+				break;
+
+			default:
+				System.out.println("Please enter a valid number to select the screen to be viewed.");
+				break;
+			}
 		}
-		} 
 	}
 
 	private void displayFleet() {
@@ -99,11 +102,18 @@ public class JetsApplication {
 
 	}
 
-	private void flyJets() {
+	public void flyJets() {
+		airField.getField();
+		
+		double flightTime = 0;
+		flightTime = 0;
+		System.out.println(flightTime);		
 
 	}
 
 	private void fastestJet() {
+		airField.getField();
+		
 
 	}
 
@@ -120,25 +130,26 @@ public class JetsApplication {
 	}
 
 	private void addJet() {
+		airField.getField();
 		List<Jet> jetsList = new ArrayList<>();
 		System.out.println("To create a new jet, please add information in " + "accordance with the prompts.");
 		System.out.print("What type of jet would you like: ");
 		String type = input.next();
-		
+
 		System.out.println("Enter the model of the jet:");
 		String model = input.next();
-		
+
 		System.out.println("Enter the speed (in MPH): ");
 		double speed = input.nextDouble();
 		input.nextLine();
-		
+
 		System.out.println("Enter the range(how far it can go before refueling): ");
 		int range = input.nextInt();
 		input.nextLine();
-		
+
 		System.out.println("Please enter the price: $");
 		long price = input.nextLong();
-		
+
 		if (type.equals("FighterJet")) {
 			Jet newJet = new FighterJet(type, model, speed, range, price);
 			jetsList.add(newJet);
@@ -154,8 +165,8 @@ public class JetsApplication {
 		} else if (type.equals("SkyTanic")) {
 			Jet newJet = new SkyTanic(type, model, speed, range, price);
 			jetsList.add(newJet);
-		} 
-		
+		}
+
 		System.out.println(jetsList);
 	}
 
