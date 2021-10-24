@@ -34,7 +34,7 @@ public class JetsApplication {
 		airField = new AirField();
 		airField.getField();
 		initList = airField.getList();
-		displayUserMenu();
+//		displayUserMenu();
 		selectOption();
 
 	}
@@ -58,7 +58,8 @@ public class JetsApplication {
 	public void selectOption() {
 
 		while (keepGoing) {
-			System.out.println("Please enter the number of the option you would like to select: \n");
+			displayUserMenu();
+			System.out.print("Please enter the number of the option you would like to select: \n");
 
 			int choice = input.nextInt();
 			input.nextLine();
@@ -105,14 +106,6 @@ public class JetsApplication {
 	}
 
 	public void flyJets() {
-//		List<Jet> initList = airField.getList();
-
-//		JetImpl jetter = new JetImpl();
-//
-//		jetter.fly();
-//		double flightTime = 0;
-//		flightTime = 0;
-//		System.out.println(flightTime);	
 		airField.flyAllJets();
 
 	}
@@ -157,7 +150,7 @@ public class JetsApplication {
 		Jet u = new UfoBoom();
 		Jet lJ = new LuxuryJet();
 
-		System.out.print("Please enter the amount of " + "cargo you would like loaded: ");
+		System.out.print("Please enter the amount of cargo you would like loaded: ");
 		int total = input.nextInt();
 		((CargoPlane) c).loadCargo(total);
 		((UfoBoom) u).loadCargo(total);
@@ -185,18 +178,18 @@ public class JetsApplication {
 		System.out.print("What type of jet would you like: ");
 		String type = input.next();
 
-		System.out.println("Enter the model of the jet:");
+		System.out.print("Enter the model of the jet:");
 		String model = input.next();
 
-		System.out.println("Enter the speed (in MPH): ");
+		System.out.print("Enter the speed (in MPH): ");
 		double speed = input.nextDouble();
 		input.nextLine();
 
-		System.out.println("Enter the range(how far it can go before refueling): ");
+		System.out.print("Enter the range(how far it can go before refueling): ");
 		int range = input.nextInt();
 		input.nextLine();
 
-		System.out.println("Please enter the price: $");
+		System.out.print("Please enter the price: $");
 		long price = input.nextLong();
 
 		if (type.equals("FighterJet")) {
