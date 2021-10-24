@@ -16,6 +16,7 @@ import com.skilldistillery.entities.UfoBoom;
 public class JetsApplication {
 
 	private AirField airField;
+	private List<Jet> initList;
 	private static Scanner input = new Scanner(System.in);
 	private boolean keepGoing = true;
 
@@ -32,6 +33,7 @@ public class JetsApplication {
 	private void launch() {
 		airField = new AirField();
 		airField.getField();
+		initList = airField.getList();
 		displayUserMenu();
 		selectOption();
 
@@ -103,29 +105,76 @@ public class JetsApplication {
 	}
 
 	public void flyJets() {
-		airField.getField();
-		
-		double flightTime = 0;
-		flightTime = 0;
-		System.out.println(flightTime);		
+//		List<Jet> initList = airField.getList();
+
+//		JetImpl jetter = new JetImpl();
+//
+//		jetter.fly();
+//		double flightTime = 0;
+//		flightTime = 0;
+//		System.out.println(flightTime);	
+		airField.flyAllJets();
 
 	}
 
 	private void fastestJet() {
-		airField.getField();
-		
+		List<Jet> initList = airField.getList();
+
+		double topSpeed = 0.0;
+		int atIndex = 0;
+
+		for (int index = 0; index < initList.size(); index++) {
+			if (initList.get(index).getSpeed() > topSpeed) {
+				atIndex = index;
+				topSpeed = initList.get(index).getSpeed();
+			}
+		}
+		System.out.println("Fastest jet in the fleet: " + initList.get(atIndex) + "with a speed of: " + topSpeed + "!");
+		System.out.println();
 
 	}
 
 	private void longestRangeJet() {
+		List<Jet> initList = airField.getList();
 
+		double longRange = 0.0;
+		int atIndex = 0;
+
+		for (int index = 0; index < initList.size(); index++) {
+			if (initList.get(index).getRange() > longRange) {
+				atIndex = index;
+				longRange = initList.get(index).getRange();
+			}
+		}
+		System.out.println("The jet with the longest range in the fleet: " + initList.get(atIndex) + "with a range of: "
+				+ longRange + "!");
+		System.out.println();
 	}
 
 	private void loadCargoJet() {
 
+		Jet c = new CargoPlane();
+		Jet u = new UfoBoom();
+		Jet lJ = new LuxuryJet();
+
+		System.out.print("Please enter the amount of " + "cargo you would like loaded: ");
+		int total = input.nextInt();
+		((CargoPlane) c).loadCargo(total);
+		((UfoBoom) u).loadCargo(total);
+		((LuxuryJet) lJ).loadCargo(total);
+		System.out.println();
+
 	}
 
 	private void letsDogfight() {
+		Jet f = new FighterJet();
+		Jet s = new SkyTanic();
+
+		System.out.print("Please enter the amount of ammo that needs to be loaded: ");
+		int total = input.nextInt();
+		((FighterJet) f).fight(total);
+		((SkyTanic) s).fight(total);
+		System.out.println();
 
 	}
 
@@ -166,12 +215,16 @@ public class JetsApplication {
 			Jet newJet = new SkyTanic(type, model, speed, range, price);
 			jetsList.add(newJet);
 		}
-
+		airField.getList().addAll(jetsList);
 		System.out.println(jetsList);
 	}
 
 	private void removeJet() {
 
+		System.out.println(airField.getList());
+		System.out.print("Which aircraft would you like to remove(count starts at 0): ");
+		int count = input.nextInt();
+		airField.getList().remove(count);
 	}
 
 	private void optionQuit() {

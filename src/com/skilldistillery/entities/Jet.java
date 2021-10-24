@@ -85,12 +85,10 @@ public abstract class Jet  {
 	}
 
 	public void fly() {
-//		AirField airField = new AirField();
-//		airField.getField();
-//		double flightTime = 0;
-//		flightTime = range/speed;
-//		System.out.println(flightTime);
-	}
+		double time = range / speed;
+		System.out.printf("\nThe amount of time remaining for flight:  %.2f\n" , time );
+		}
+	
 	public double getSpeedInMach() {
 		
 		return speed;

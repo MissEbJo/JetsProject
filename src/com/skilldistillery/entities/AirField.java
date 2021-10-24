@@ -62,5 +62,14 @@ public class AirField {
 			}
 		}
 	}
+	public List<Jet> getList(){
+		return jetsList;
+	}
+	public void flyAllJets() {
+		for (Jet jet : jetsList) {
+			System.out.println(jet);
+			jet.fly();
+		}
+	}
 
 }
