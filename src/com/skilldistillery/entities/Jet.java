@@ -3,6 +3,7 @@ package com.skilldistillery.entities;
 import java.util.Objects;
 
 public abstract class Jet  {
+	protected String type;
 	private String model;
 	private double speed;
 	private int range;
@@ -11,8 +12,9 @@ public abstract class Jet  {
 	
 	
 	
-	public Jet(String model, double speed, int range, long price) {
+	public Jet(String type, String model, double speed, int range, long price) {
 		super();
+		this.type = type;
 		this.model = model;
 		this.speed = speed;
 		this.range = range;
@@ -21,7 +23,7 @@ public abstract class Jet  {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(model, price, range, speed);
+		return Objects.hash(model, price, range, speed, type);
 	}
 
 	@Override
@@ -34,7 +36,17 @@ public abstract class Jet  {
 			return false;
 		Jet other = (Jet) obj;
 		return Objects.equals(model, other.model) && price == other.price && range == other.range
-				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed);
+				&& Double.doubleToLongBits(speed) == Double.doubleToLongBits(other.speed)
+				&& Objects.equals(type, other.type);
+	}
+
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public String getModel() {
@@ -76,4 +88,12 @@ public abstract class Jet  {
 		
 		return speed;
 	}
+
+	@Override
+	public String toString() {
+		return "Type: " + type + " Model: " + model + ", Speed(MPH): " 
+	+ speed + ", Range:" + range + ", Price: $" + price;
+				
+	}
+	
 }
